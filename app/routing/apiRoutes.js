@@ -26,11 +26,21 @@ var users = [
     }
 ];
 
-// Home page route
-apiRouter.post('/api/friends', function (req, res) {
 
-    let scores = req.body
-    console.log(scores)
+apiRouter.post('/api/friends/add', function (req, res) {
+
+    let user = req.body
+    users.push(user)
+});
+
+apiRouter.get('/api/friends', function (req, res) {
+
+    res.json(users)
+});
+
+apiRouter.get('/api/friends/match', function (req, res) {
+    let user = users[0]
+    res.json(user)
 });
 
 module.exports = apiRouter;
